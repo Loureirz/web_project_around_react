@@ -58,11 +58,11 @@ export default function Main() {
                 className="popup__close-img"/></button>
             <h2 className="form__title">Editar Perfil</h2>
             <form className="form__fieldset">
-              <input name="name" type="text" className="form__input-name"  minlength="2"
-                maxlength="40" required/>
+              <input name="name" type="text" className="form__input-name"  minLength="2"
+                maxLength="40" required/>
               <p className="form__input-name-error"></p>
-              <input name="about" type="text" className="form__input-job"   minlength="2"
-                maxlength="200" required/>
+              <input name="about" type="text" className="form__input-job"   minLength="2"
+                maxLength="200" required/>
               <p className="form__input-job-error"></p>
               <button type="submit"  className="form__submit">Salvar</button>
             </form>
@@ -74,7 +74,7 @@ export default function Main() {
           <div className="popup__avatar">
             <button className="popup__close"><img src={close} alt="icone de fechar" className="popup__close-img"/></button>
             <h2 className="popup__avatar-title">Alterar a Foto do Perfil</h2>
-            <form className="popup__avatar-form" novalidate>
+            <form className="popup__avatar-form" noValidate>
               <input
                 className="popup__avatar-input"
                 id="avatar"
@@ -94,9 +94,9 @@ export default function Main() {
           <div className="popupcard formcard">
             <button className="popup__close"><img src={close} alt="icone de fechar" className="popup__close-img"/></button>
             <h2 className="formcard__title">Novo Local</h2>
-            <form className="formcard__fieldset" novalidate>
-              <input type="text" className="formcard__input-title" name="name"  minlength="2"
-                maxlength="30" required/>
+            <form className="formcard__fieldset" noValidate>
+              <input type="text" className="formcard__input-title" name="name"  minLength="2"
+                maxLength="30" required/>
               <p className="formcard__input-title-error"></p>
               <input id="link-image" type="url" className="formcard__input-link" name="link"
                 required/>
