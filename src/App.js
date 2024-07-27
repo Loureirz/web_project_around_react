@@ -22,10 +22,16 @@ function App() {
     setIsAddPlacePopupOpen(true);
 }
 
+  const closeAllPopups = () => {
+    setIsAddPlacePopupOpen(false);
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+  }
+
   return (
     <div className="page">
       <Header />
-      <Main onEditAvatarClick={handleEditAvatarClick} isEditAvatarPopupOpen={isEditAvatarPopupOpen} onEditProfileClick={handleEditProfileClick} isEditProfilePopupOpen={isEditProfilePopupOpen} onAddPlaceClick={handleAddPlaceClick} isAddPlacePopupOpen={isAddPlacePopupOpen} />
+      <Main onEditAvatarClick={handleEditAvatarClick} isEditAvatarPopupOpen={isEditAvatarPopupOpen} onEditProfileClick={handleEditProfileClick} isEditProfilePopupOpen={isEditProfilePopupOpen} onAddPlaceClick={handleAddPlaceClick} isAddPlacePopupOpen={isAddPlacePopupOpen} closeAllPopups={closeAllPopups}/>
       <Footer />
   </div>
   );

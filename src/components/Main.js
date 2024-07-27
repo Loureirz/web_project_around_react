@@ -5,7 +5,7 @@ import close from "../image/close.svg";
 import trash from "../image/Trash.svg";
 import PopupWithForm from "./PopupWithForm";
 
-export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, onCardClick}) {
+export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, closeAllPopups, onCardClick}) {
 
     return (
         <main className="main">
@@ -64,7 +64,7 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
         </template>
       </div>
 
-      <PopupWithForm name="user" title="Editar Perfil" isOpen={isEditProfilePopupOpen}>
+      <PopupWithForm name="user" title="Editar Perfil" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
               <input name="name" type="text" className="form__input-name"  minLength="2"
                 maxLength="40" placeholder="Nome" required/>
               <p className="form__input-name-error"></p>
@@ -74,7 +74,7 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
               <button type="submit"  className="form__submit">Salvar</button>
       </PopupWithForm>
 
-      <PopupWithForm name="avatar" title="Alterar a Foto de Perfil" isOpen={isEditAvatarPopupOpen}>
+      <PopupWithForm name="avatar" title="Alterar a Foto de Perfil" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
               <input
                 className="popup__avatar-input"
                 id="avatar"
@@ -87,7 +87,7 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
               <button className="popup__avatar-submit" type="submit">Salvar</button>
       </PopupWithForm>
 
-      <PopupWithForm name="card" title="Novo Local" isOpen={isAddPlacePopupOpen}>
+      <PopupWithForm name="card" title="Novo Local" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
               <input type="text" className="formcard__input-title" name="name"  minLength="2"
                 maxLength="30" placeholder="Título" required/>
               <p className="formcard__input-title-error"></p>
