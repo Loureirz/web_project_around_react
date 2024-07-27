@@ -1,47 +1,20 @@
-import { Popup } from "./Popup.js";
+import close from "../image/close.svg";
 
-export class PopupWithForm extends Popup {
-  constructor(popupSelector, submitCallBack, popupForm) {
-    super(popupSelector);
-    this._submitCallBack = submitCallBack;
-    this._formElement = document.querySelector(popupForm);
-  }
+export default function PopupWithForm({ name, title, children, isOpen }) {
 
-  _getInputValues() {
-    const inputs = Array.from(this._formElement.querySelectorAll("input"));
+  const cssIsOpened = isOpen ? 'popup-opened' : '';
 
-    const values = {};
-
-    inputs.forEach((input) => {
-      values[input.name] = input.value;
-    });
-    return values;
-  }
-
-  _loading(isLoading) {
-    if(isLoading) {
-      this._submitCallBack.textContent = "Salvando...";
-    }
-  }
-
-  setEventListeners() {
-    super.setEventListeners();
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-
-      const valores = this._getInputValues();
-      this._submitCallBack(valores);
-      this._loading(true);
-      this.close();
-      this.reset();
-    });
-  }
-
-  close() {
-    super.close();
-  }
-
-  reset() {
-    this._formElement.reset();
-  }
+  return (
+    <div className={`popup popup_${name} ${cssIsOpened}`}>
+          <div className="overlay"></div>
+          <div className="popup__container">
+            <button className="popup__close"><img src={close} alt="icone de fechar"
+                className="popup__close-img"/></button>
+            <h2 className="form__title">{title}</h2>
+            <form className="form__fieldset" noValidate name={name}>
+              {children}
+            </form>
+          </div>
+        </div>
+  )
 }
