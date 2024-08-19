@@ -1,24 +1,47 @@
+import { useState, useEffect } from "react";
 import profilePic from "../image/image.jpg";
 import buttonPic from "../image/vector.svg";
 import buttonAddPic from "../image/vectoradd.svg";
 import close from "../image/close.svg";
-import trash from "../image/Trash.svg";
 import PopupWithForm from "./PopupWithForm";
+import api from "../utils/api";
+import Card from "./Card";
 
 export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, closeAllPopups, onCardClick}) {
 
-    return (
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    api
+      .getUserInfo()
+      .then(data => {
+        setUserName(data.name)
+        setUserDescription(data.about)
+        setUserAvatar(data.avatar)
+      })
+      .catch((error) => console.log('Erro ao obter dados do usuário:', error));
+
+      api
+      .getInitialCards()
+      .then(setCards)
+      .catch((error) => console.log('Erro ao obter dados do usuário:', error));
+  }, []);
+
+  return (
         <main className="main">
       <section className="profile">
         <button type="button" className="profile__image-edit" onClick={onEditAvatarClick}>
-          <img src={profilePic} alt="Foto Profile" className="profile__image"/>
+          <img src={userAvatar} alt="Foto Profile" className="profile__image"/>
         </button>
         <div className="profile__info">
-          <h4 className="profile__info-name">Jacques Cousteau</h4>
+          <h4 className="profile__info-name">{userName}</h4>
           <button className="profile__info-button" onClick={onEditProfileClick}>
             <img src={buttonPic} alt="Button Image" className="profile__info-button-image"/>
           </button>
-          <p className="profile__info-text">Explorador</p>
+          <p className="profile__info-text">{userDescription}</p>
 
 
         </div>
@@ -27,14 +50,7 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
         </button>
         
 
-        <div className="popup popup_image">
-          <div className="overlay"></div>
-          <div className="popup__zoom">
-            <button className="popup__close"><img src={close} alt="icone de fechar" className="popup__close-img"/></button>
-            <img src="#" alt="#" className="popup__zoom-image"/>
-            <p className="popup__zoom-text"></p>
-         </div>
-        </div>
+        
 
         <div className="popup popup-confirm" id="popup-confirm">
           <div className="overlay"></div>
@@ -46,22 +62,9 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
         </div>
       </section>
       <div className="elements">
-        <template id="template">
-          <div className="elements__card">
-            <button type="button" className="elements__delete-button">
-              <img className="elements__delete-icon" src={trash} alt="delete button icon" />
-            </button>
-            <img className="elements__card-image" src="#" alt="" />
-            <div className="elements__wrapper-text-and-like-button">
-              <p className="elements__card-name"></p>
-              <div className="elements__like">
-              <button type="button" className="elements__like-button">
-              </button>
-              <p className="elements__like-counter"></p>
-              </div>
-            </div>
-          </div>
-        </template>
+      {cards.map(card => (
+        <Card key={card._id} card={card} onCardClick={onCardClick} />
+      ))}
       </div>
 
       <PopupWithForm name="user" title="Editar Perfil" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
