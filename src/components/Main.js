@@ -71,7 +71,7 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
               <input name="about" type="text" className="form__input-job"   minLength="2"
                 maxLength="200" placeholder="Sobre" required/>
               <p className="form__input-job-error"></p>
-              <button type="submit"  className="form__submit">Salvar</button>
+              <button type="submit"  className="form__submit">Salvarr</button>
       </PopupWithForm>
 
       <PopupWithForm name="avatar" title="Alterar a Foto de Perfil" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
