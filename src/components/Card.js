@@ -7,6 +7,7 @@ function Card({ card, onCardClick }) {
         onCardClick(card);
       }
 
+
     return (
             <div className="elements__card" key={card._id}>
               <button type="button" className="elements__delete-button">
