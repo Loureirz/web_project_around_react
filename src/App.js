@@ -1,6 +1,6 @@
 import Header from "./components/Header.js";
 import Main from "./components/Main.js";
-import Footer from "./components/footer.js";
+import Footer from "./components/Footer.js";
 import { useEffect, useState } from "react";
 import ImagePopup from "./components/ImagePopup";
 
