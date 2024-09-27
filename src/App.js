@@ -2,7 +2,6 @@ import Header from "./components/Header.js";
 import Main from "./components/Main.js";
 import Footer from "./components/Footer.js";
 import { useEffect, useState } from "react";
-import api from "./utils/api";
 import ImagePopup from "./components/ImagePopup";
 
 
