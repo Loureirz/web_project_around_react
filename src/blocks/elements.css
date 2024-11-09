@@ -110,15 +110,15 @@
   transition: 0.3s;
 }
 
-.elements__like-button_press {
-  display: inline-block;
+.active {
+  /*display: inline-block;
   align-self: center;
   border: none;
   outline: none;
   cursor: pointer;
   width: 21px;
   height: 19px;
-  background-size: 100%;
+  background-size: 100%;*/
   background: url(../image/like.svg) center no-repeat;
 }
 

@@ -6,42 +6,26 @@ import close from "../image/close.svg";
 import PopupWithForm from "./PopupWithForm";
 import api from "../utils/api";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
+import { useContext } from "react";
 
-export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, closeAllPopups, onCardClick}) {
+export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, closeAllPopups, onCardClick, onCardLike, onCardDelete}) {
 
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([]);
+  const currentUser = useContext(CurrentUserContext);
 
-  useEffect(() => {
-    api
-      .getUserInfo()
-      .then(data => {
-        setUserName(data.name)
-        setUserDescription(data.about)
-        setUserAvatar(data.avatar)
-      })
-      .catch((error) => console.log('Erro ao obter dados do usuário:', error));
-
-      api
-      .getInitialCards()
-      .then(setCards)
-      .catch((error) => console.log('Erro ao obter dados do usuário:', error));
-  }, []);
 
   return (
         <main className="main">
       <section className="profile">
         <button type="button" className="profile__image-edit" onClick={onEditAvatarClick}>
-          <img src={userAvatar} alt="Foto Profile" className="profile__image"/>
+          <img src={currentUser.avatar} alt="Foto Profile" className="profile__image"/>
         </button>
         <div className="profile__info">
-          <h4 className="profile__info-name">{userName}</h4>
+          <h4 className="profile__info-name">{currentUser.name}</h4>
           <button className="profile__info-button" onClick={onEditProfileClick}>
             <img src={buttonPic} alt="Button Image" className="profile__info-button-image"/>
           </button>
-          <p className="profile__info-text">{userDescription}</p>
+          <p className="profile__info-text">{currentUser.about}</p>
 
 
         </div>
@@ -63,7 +47,7 @@ export default function Main({onEditAvatarClick, isEditAvatarPopupOpen, onEditPr
       </section>
       <div className="elements">
       {cards.map(card => (
-        <Card key={card._id} card={card} onCardClick={onCardClick} />
+        <Card key={card._id} card={card} onCardClick={onCardClick} onCardLike={onCardLike} onCardDelete={onCardDelete} />
       ))}
       </div>
 
