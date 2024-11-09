@@ -28,7 +28,8 @@ class Api {
         });
     }
 
-    editUserInfo(name, about) {
+    editUserInfo({ name, about }) {
+      console.log('Enviando dados para a API:', { name, about });  // Debug para ver os dados enviados
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
         headers: this._headers,
@@ -36,14 +37,21 @@ class Api {
           name: name,
           about: about,
         }),
-      }).then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-
-        return Promise.reject(`Error: ${res.status}`);
-      });
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          return Promise.reject(`Erro: ${res.status}`);
+        })
+        .catch((error) => {
+          console.log("Erro ao editar o perfil:", error);
+          return Promise.reject(error);
+        });
     }
+    
+    
+    
 
     addCard({name, link}) {
       console.log(this._baseUrl)

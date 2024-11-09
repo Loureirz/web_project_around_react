@@ -4,6 +4,9 @@ import Footer from "./components/Footer.js";
 import api from "./utils/api.js";
 import { useEffect, useState } from "react";
 import ImagePopup from "./components/ImagePopup";
+import EditProfile from "./components/EditProfile.js";
+import EditAvatar from "./components/EditAvatar.js";
+import AddPlacePopup from "./components/AddCard.js";
 import { CurrentUserContext } from "./contexts/CurrentUserContext.js";
 
 
@@ -13,29 +16,54 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({ name: "", about: "" });
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api
       .getUserInfo()
-      .then(setCurrentUser)
-      .catch((error) => console.log('Erro ao obter dados do usuário:', error));
-
-        api
-        .getInitialCards()
-        .then(setCards)
-        .catch((error) => console.log('Erro ao obter dados do usuário:', error));
-    }, []);
-
-  /*useEffect(() => {
+      .then((data) => {
+        console.log('Dados do usuário obtidos:', data); // Verifica os dados retornados
+        setCurrentUser(data);
+      })
+      .catch((error) => {
+        console.log('Erro ao obter dados do usuário:', error);
+      });
+  
     api
       .getInitialCards()
-      .then((fetchedCards) => {
-        setCards(fetchedCards);
-      })
-      .catch((error) => console.log('Erro ao obter os cards:', error));
-  }, []);*/
+      .then(setCards)
+      .catch((error) => console.log('Erro ao obter dados dos cards:', error));
+  }, []);
+
+    const handleUpdateUser = (userData) => {
+      if (!userData.name || !userData.about) {
+        console.log('Erro: nome ou descrição ausentes');
+        return; // Não envia a requisição se os dados estiverem incompletos
+      }
+    
+      api.editUserInfo(userData)
+        .then((userInfo) => {
+          setCurrentUser(userInfo); // Atualiza os dados do usuário
+          closeAllPopups(); // Fecha o popup
+        })
+        .catch((error) => {
+          console.log('Erro ao atualizar o perfil:', error);
+        });
+    };
+
+    const handleUpdateAvatar = (data) => {
+      (async () => {
+        await api
+          .editAvatar(data)
+          .then((newData) => {
+            setCurrentUser(newData); // Atualiza o avatar do usuário localmente
+            closeAllPopups(); // Fecha o pop-up após a atualização
+          })
+          .catch((error) => console.error("Erro ao atualizar o avatar:", error));
+      })();
+    };
+  
 
   const handleCardClick = (card) => {
     setSelectedCard(card)
@@ -79,6 +107,15 @@ const handleCardDelete = (card) => {
     .catch((error) => console.log("Erro ao deletar o card:", error));
 };
 
+const handleAddPlaceSubmit = (newCardData) => {
+  api.addCard(newCardData)
+    .then((newCard) => {
+      setCards((prevCards) => [newCard, ...prevCards]);
+      closeAllPopups();
+    })
+    .catch((error) => console.error('Erro ao adicionar o cartão:', error));
+};
+
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -101,7 +138,7 @@ const handleCardDelete = (card) => {
 
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser, handleUpdateAvatar}}>
       <Header />
       <Main 
       cards={cards}
@@ -115,6 +152,21 @@ const handleCardDelete = (card) => {
       onCardClick={handleCardClick}
       onCardLike={handleCardLike}
       onCardDelete={handleCardDelete}
+      />
+      <EditProfile
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
+        onUpdateUser={handleUpdateUser}
+      />
+      <EditAvatar
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
+        onUpdateAvatar={handleUpdateAvatar}
+      />
+      <AddPlacePopup
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
+        onAddPlaceSubmit={handleAddPlaceSubmit}
       />
       {selectedCard && (
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />

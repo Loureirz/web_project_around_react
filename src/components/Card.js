@@ -3,7 +3,7 @@ import trash from "../image/Trash.svg";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {
-    const currentUser = useContext(CurrentUserContext);
+    const { currentUser } = useContext(CurrentUserContext);
     const { link, name, owner, likes } = card;
 
     const isOwn = owner._id === currentUser._id;

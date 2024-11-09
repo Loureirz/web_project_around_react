@@ -11,7 +11,7 @@ import { useContext } from "react";
 
 export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, closeAllPopups, onCardClick, onCardLike, onCardDelete}) {
 
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
 
   return (
