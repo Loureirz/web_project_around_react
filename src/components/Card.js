@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import trash from "../image/Trash.svg";
+import trash from "../images/Trash.svg";
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Card({ card, onCardClick, onCardLike, onCardDelete }) {

@@ -21,7 +21,7 @@
 
 .profile__image-edit {
   padding: 0;
-  background: url(../image/edit.svg) center no-repeat;
+  background: url(../images/edit.svg) center no-repeat;
   border: none;
   cursor: pointer;
   transition: 0.2s ease-in;

@@ -1,4 +1,4 @@
-import close from "../image/close.svg";
+import close from "../images/close.svg";
 
 export default function PopupWithForm({ name, title, children, isOpen, onClose, onSubmit}) {
 

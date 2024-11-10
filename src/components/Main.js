@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import profilePic from "../image/image.jpg";
-import buttonPic from "../image/vector.svg";
-import buttonAddPic from "../image/vectoradd.svg";
-import close from "../image/close.svg";
+import profilePic from "../images/image.jpg";
+import buttonPic from "../images/vector.svg";
+import buttonAddPic from "../images/vectoradd.svg";
+import close from "../images/close.svg";
 import PopupWithForm from "./PopupWithForm";
 import api from "../utils/api";
 import Card from "./Card";
