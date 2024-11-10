@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ImagePopup from "./components/ImagePopup";
 import EditProfile from "./components/EditProfile.js";
 import EditAvatar from "./components/EditAvatar.js";
-import AddPlacePopup from "./components/AddCard.js";
+import AddPlacePopup from "./components/NewCard.js";
 import { CurrentUserContext } from "./contexts/CurrentUserContext.js";
 
 

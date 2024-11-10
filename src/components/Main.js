@@ -3,7 +3,7 @@ import profilePic from "../images/image.jpg";
 import buttonPic from "../images/vector.svg";
 import buttonAddPic from "../images/vectoradd.svg";
 import close from "../images/close.svg";
-import PopupWithForm from "./PopupWithForm";
+import PopupWithForm from "./Popup";
 import api from "../utils/api";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
