@@ -4,7 +4,7 @@ import buttonAddPic from "../../images/vectoradd.svg";
 import close from "../../images/close.svg";
 import PopupWithForm from "./components/popup/Popup";
 import api from "../../utils/api";
-import Card from "./card/Card";
+import Card from "./components/card/Card";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
