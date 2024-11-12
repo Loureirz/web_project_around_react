@@ -1,12 +1,12 @@
 import Header from "./header/Header.js";
-import Main from "./main/Main.js";
+import Main from "./Main.js"
 import Footer from "./footer/Footer.js";
 import api from "../utils/api.js";
 import { useEffect, useState } from "react";
-import ImagePopup from "./main/components/popup/imagePopup/ImagePopup.js";
-import EditProfile from "./main/components/popup/editProfile/EditProfile.js";
-import EditAvatar from "./main/components/popup/editAvatar/EditAvatar.js";
-import AddPlacePopup from "./main/components/popup/NewCard/NewCard.js";
+import ImagePopup from "./popup/imagePopup/ImagePopup.js";
+import EditProfile from "./popup/editProfile/EditProfile.js";
+import EditAvatar from "./popup/editAvatar/EditAvatar.js";
+import AddPlacePopup from "./NewCard/NewCard.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 
@@ -15,6 +15,8 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false);
+  const [cardToDelete, setCardToDelete] = useState(null);
   const [selectedCard, setSelectedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState({ name: "", about: "" });
   const [cards, setCards] = useState([]);
@@ -98,14 +100,22 @@ function App() {
   };
   
 
-const handleCardDelete = (card) => {
-  api
-    .removeCard(card._id) // Método que faz a requisição DELETE para deletar o card
-    .then(() => {
-      setCards((state) => state.filter((c) => c._id !== card._id)); // Remove o card do estado
-    })
-    .catch((error) => console.log("Erro ao deletar o card:", error));
-};
+  function handleDeleteClick(card) {
+    setCardToDelete(card); // Define o card a ser excluído
+    setIsConfirmationPopupOpen(true); // Abre o popup de confirmação
+  }
+
+  // Função chamada após confirmação
+  function confirmDelete() {
+    api
+      .removeCard(cardToDelete._id) // Chama a API para deletar o card
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== cardToDelete._id)); // Remove o card do estado
+        setCardToDelete(null); // Reseta o card selecionado
+        setIsConfirmationPopupOpen(false); // Fecha o popup de confirmação
+      })
+      .catch((error) => console.log("Erro ao deletar o card:", error));
+  }
 
 const handleAddPlaceSubmit = (newCardData) => {
   api.addCard(newCardData)
@@ -151,7 +161,7 @@ const handleAddPlaceSubmit = (newCardData) => {
       closeAllPopups={closeAllPopups}
       onCardClick={handleCardClick}
       onCardLike={handleCardLike}
-      onCardDelete={handleCardDelete}
+      onCardDelete={handleDeleteClick}
       />
       <EditProfile
         isOpen={isEditProfilePopupOpen}
