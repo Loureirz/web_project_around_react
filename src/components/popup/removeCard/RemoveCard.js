@@ -1,4 +1,4 @@
-import PopupWithForm from "../Popup";
+import PopupWithForm from "../../Popup";
 
 export default function ConfirmationPopup({
   isOpen,

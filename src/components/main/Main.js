@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import buttonPic from "../../images/vector.svg";
 import buttonAddPic from "../../images/vectoradd.svg";
 import close from "../../images/close.svg";
-import PopupWithForm from "../popup/Popup";
+import PopupWithForm from "../Popup";
 import Card from "../card/Card";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
