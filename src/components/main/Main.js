@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import buttonPic from "../../images/vector.svg";
 import buttonAddPic from "../../images/vectoradd.svg";
 import close from "../../images/close.svg";
-import PopupWithForm from "./components/popup/Popup";
-import Card from "./card/Card";
+import PopupWithForm from "../popup/Popup";
+import Card from "../card/Card";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
@@ -65,7 +65,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     placeholder="Nome"
     required
   />
-  <span id="username-error" className="form__input-name-error"></span> {/* Alterado para 'span' */}
+  <p id="username-error" className="form__input-name-error"></p> {/* Alterado para 'span' */}
   
   <input
     name="userabout"

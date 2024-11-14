@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from 'react'; 
-import { CurrentUserContext } from '../../../../../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../../../contexts/CurrentUserContext';
 import PopupWithForm from '../Popup';
 
 export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
@@ -30,6 +30,7 @@ export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
       className="popup__form"
       name="user"
       id="edit-profile-form"
+      title="Editar perfil"
       noValidate
     >
         <input
@@ -45,7 +46,7 @@ export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
             setName(event.target.value);
           }}
         />
-        <span className="form__input-name-error"></span>
+        <p className="form__input-name-error"></p>
         <input
           className="form__input-job"
           maxLength={200}
@@ -59,7 +60,7 @@ export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
             setAbout(event.target.value);
           }}
         />
-        <span className="form__input-job-error" id="owner-description-error"></span>
+        <p className="form__input-job-error" id="owner-description-error"></p>
       <button className="form__submit" type="submit">
         Salvar
       </button>

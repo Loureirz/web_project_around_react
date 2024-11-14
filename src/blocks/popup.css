@@ -89,7 +89,7 @@
 .form__title {
   font-family: "Inter", sans-serif;
   font-size: 24px;
-  padding: 10px 64px 15px 36px;
+  padding: 20px 64px 15px 36px;
   margin: 0;
 }
 
@@ -264,7 +264,7 @@
 
   .form__title {
     font-size: 18px;
-    padding: 0px 22px 0 22px;
+    padding: 20px 22px 15px 22px;
     margin: 0;
   }
 
@@ -284,6 +284,16 @@
     padding: 0;
     margin: 40px 22px 25px 22px;
     border-radius: 5px;
+  }
+
+  .popup__avatar-input {
+    margin: 20px 20px 0 20px;
+    width: 238px;
+  }
+
+  .popup__avatar-submit {
+    width: 238px;
+    margin: 40px 22px 25px 22px;
   }
 }
 

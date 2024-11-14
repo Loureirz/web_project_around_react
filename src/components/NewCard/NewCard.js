@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PopupWithForm from '../../popup/Popup';
+import PopupWithForm from '../popup/Popup';
 
 function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
   const [name, setName] = useState('');
@@ -39,7 +39,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
         maxLength={30}
         required
       />
-      <span id="title-input-error" className="formcard__input-title-error"></span>
+      <p id="title-input-error" className="formcard__input-title-error"></p>
       
       <input
         className="formcard__input-link"
@@ -51,7 +51,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlaceSubmit }) {
         placeholder="Link da imagem"
         required
       />
-      <span id="url-input-error" className="formcard__input-link-error"></span>
+      <p id="url-input-error" className="formcard__input-link-error"></p>
       
       <button
         className="formcard__submit"

@@ -34,6 +34,7 @@ export default function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
         name="image"
         required
       />
+      <p id="url-input-error" className="popup__avatar-input_type_error"></p>
       <button type="submit" className="popup__avatar-submit">
         Salvar
       </button>
