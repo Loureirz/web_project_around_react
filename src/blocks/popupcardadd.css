@@ -111,6 +111,21 @@
   cursor: pointer;
 }
 
+.formcard__delete {
+  width: 358px;
+  height: 46px;
+  background-color: #000;
+  color: #fff;
+  margin: 35px 36px 0px 36px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formcard__submit_inactive {
+  opacity: 0.5;  /* Opacidade para indicar que o botão está desabilitado */
+  cursor: not-allowed;  /* Cursor para indicar que o botão não pode ser clicado */
+}
+
 @media screen and (max-width: 720px) {
   .popupcard {
     width: 17.625rem;

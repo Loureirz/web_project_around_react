@@ -7,6 +7,7 @@ import ImagePopup from "./popup/imagePopup/ImagePopup.js";
 import EditProfile from "./popup/editProfile/EditProfile.js";
 import EditAvatar from "./popup/editAvatar/EditAvatar.js";
 import AddPlacePopup from "./NewCard/NewCard.js";
+import ConfirmationPopup from "./popup/removeCard/RemoveCard.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 
@@ -107,11 +108,14 @@ function App() {
 
   // Função chamada após confirmação
   function confirmDelete() {
+    if (!cardToDelete) return; // Verificação de segurança para evitar chamadas desnecessárias
+  
     api
       .removeCard(cardToDelete._id) // Chama a API para deletar o card
       .then(() => {
         setCards((state) => state.filter((c) => c._id !== cardToDelete._id)); // Remove o card do estado
-        setCardToDelete(null); // Reseta o card selecionado
+  
+        setCardToDelete(null); // Limpa o card selecionado
         setIsConfirmationPopupOpen(false); // Fecha o popup de confirmação
       })
       .catch((error) => console.log("Erro ao deletar o card:", error));
@@ -177,6 +181,11 @@ const handleAddPlaceSubmit = (newCardData) => {
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
         onAddPlaceSubmit={handleAddPlaceSubmit}
+      />
+      <ConfirmationPopup
+        isOpen={isConfirmationPopupOpen}
+        onClose={() => setIsConfirmationPopupOpen(false)}
+        onConfirmationSubmit={confirmDelete}
       />
       {selectedCard && (
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />

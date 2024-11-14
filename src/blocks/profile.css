@@ -89,9 +89,6 @@
   transition: 0.4s;
 }
 
-.profile__button-add {
-}
-
 @media screen and (max-width: 1024px) {
   .main {
     margin: 40px auto 0;

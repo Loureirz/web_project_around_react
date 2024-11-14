@@ -49,38 +49,86 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
       ))}
       </div>
 
-      <PopupWithForm name="user" title="Editar Perfil" isOpen={isEditProfilePopupOpen} onClose={closeAllPopups}>
-              <input name="name" type="text" className="form__input-name"  minLength="2"
-                maxLength="40" placeholder="Nome" required/>
-              <p className="form__input-name-error"></p>
-              <input name="about" type="text" className="form__input-job"   minLength="2"
-                maxLength="200" placeholder="Sobre" required/>
-              <p className="form__input-job-error"></p>
-              <button type="submit"  className="form__submit">Salvar</button>
-      </PopupWithForm>
+      <PopupWithForm
+  name="user"
+  title="Editar Perfil"
+  isOpen={isEditProfilePopupOpen}
+  onClose={closeAllPopups}
+>
+  <input
+    id="username"
+    name="name"
+    type="text"
+    className="form__input-name"
+    minLength="2"
+    maxLength="40"
+    placeholder="Nome"
+    required
+  />
+  <span id="username-error" className="form__input-name-error"></span> {/* Alterado para 'span' */}
+  
+  <input
+    name="userabout"
+    type="text"
+    className="form__input-job"
+    minLength="2"
+    maxLength="200"
+    placeholder="Sobre"
+    required
+  />
+  <span id="userabout-error" className="form__input-job-error"></span> {/* Alterado para 'span' */}
 
-      <PopupWithForm name="avatar" title="Alterar a Foto de Perfil" isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}>
-              <input
-                className="popup__avatar-input"
-                id="avatar"
-                placeholder="Link da Imagem"
-                type="url"
-                name="image"
-                required
-              />
-              <p className="git"></p>
-              <button className="popup__avatar-submit" type="submit">Salvar</button>
-      </PopupWithForm>
+  <button type="submit" className="form__submit">
+    Salvar
+  </button>
+</PopupWithForm>
 
-      <PopupWithForm name="card" title="Novo Local" isOpen={isAddPlacePopupOpen} onClose={closeAllPopups}>
-              <input type="text" className="formcard__input-title" name="name"  minLength="2"
-                maxLength="30" placeholder="Título" required/>
-              <p className="formcard__input-title-error"></p>
-              <input id="link-image" type="url" className="formcard__input-link" name="link" placeholder="Link da Imagem"
-                required/>
-              <p className="formcard__input-link-error"></p>
-              <button type="submit" value="Criar" className="formcard__submit">Criar</button>
-      </PopupWithForm>
+<PopupWithForm
+  name="avatar"
+  title="Alterar a Foto de Perfil"
+  isOpen={isEditAvatarPopupOpen}
+  onClose={closeAllPopups}
+>
+  <input
+    className="popup__avatar-input"
+    id="avatar"
+    placeholder="Link da Imagem"
+    type="url"
+    name="image"
+    required
+  />
+  <span id="avatar-error" className="popup__avatar-error"></span> {/* Alteração aqui para 'span' e ID correto */}
+
+  <button className="popup__avatar-submit" type="submit">Salvar</button>
+</PopupWithForm>
+
+<PopupWithForm
+  name="card"
+  title="Novo Local"
+  isOpen={isAddPlacePopupOpen}
+  onClose={closeAllPopups}
+>
+  <input
+    type="text"
+    className="formcard__input-title"
+    name="name"
+    minLength="2"
+    maxLength="30"
+    placeholder="Título"
+    required
+  />
+  <span id="formcard__input-title-error" className="formcard__input-title-error"></span> {/* Alteração aqui para 'span' e ID correto */}
+
+  <input
+    id="link-image"
+    type="url"
+    className="formcard__input-link"
+    name="link"
+    placeholder="Link da Imagem"
+    required
+  />
+  <span id="formcard__input-link-error" className="formcard__input-link-error"></span> {/* Alteração aqui para 'span' e ID correto */}
+</PopupWithForm>
     </main>
     )
 }

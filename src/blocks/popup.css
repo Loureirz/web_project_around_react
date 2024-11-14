@@ -293,4 +293,9 @@
     right: 0;
     left: auto;
   }
+
+  .popup__avatar-input {
+    margin: 5px 20px 0 20px;
+    width: 238px;
+  }
 }
