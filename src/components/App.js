@@ -1,13 +1,13 @@
 import Header from "./header/Header.js";
-import Main from "./Main.js"
+import Main from "./main/Main.js";
 import Footer from "./footer/Footer.js";
 import api from "../utils/api.js";
 import { useEffect, useState } from "react";
-import ImagePopup from "./popup/imagePopup/ImagePopup.js";
-import EditProfile from "./popup/editProfile/EditProfile.js";
-import EditAvatar from "./popup/editAvatar/EditAvatar.js";
-import AddPlacePopup from "./NewCard/NewCard.js";
-import ConfirmationPopup from "./popup/removeCard/RemoveCard.js";
+import ImagePopup from "./main/components/popup/imagePopup/ImagePopup.js";
+import EditProfile from "./main/components/popup/editProfile/EditProfile.js";
+import EditAvatar from "./main/components/popup/editAvatar/EditAvatar.js";
+import AddPlacePopup from "./main/components/popup/NewCard/NewCard.js";
+import ConfirmationPopup from "./main/components/popup/removeCard/RemoveCard.js";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 

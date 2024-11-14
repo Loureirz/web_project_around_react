@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import close from "../../images/close.svg";
-import FormValidator from "../../utils/FormValidator"; // Ajuste o caminho conforme necessário
+import close from "../../../../images/close.svg";
+import FormValidator from "../../../../utils/FormValidator"; // Ajuste o caminho conforme necessário
 
 // Configurações para cada tipo de formulário
 const configUserValidate = {
