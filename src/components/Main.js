@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import buttonPic from "../../images/vector.svg";
-import buttonAddPic from "../../images/vectoradd.svg";
-import close from "../../images/close.svg";
-import PopupWithForm from "../Popup";
-import Card from "../card/Card";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import buttonPic from "../images/vector.svg";
+import buttonAddPic from "../images/vectoradd.svg";
+import close from "../images/close.svg";
+import PopupWithForm from "./Popup";
+import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
 
 export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, onEditProfileClick, isEditProfilePopupOpen, onAddPlaceClick, isAddPlacePopupOpen, closeAllPopups, onCardClick, onCardLike, onCardDelete}) {

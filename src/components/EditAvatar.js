@@ -1,5 +1,5 @@
 import { useState, useContext, useRef, useEffect } from 'react';
-import PopupWithForm from '../../Popup';
+import PopupWithForm from './Popup';
 
 export default function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
     const link = useRef("");
