@@ -1,4 +1,4 @@
-import PopupWithForm from "./Popup";
+import Popup from "./Popup";
 
 export default function ConfirmationPopup({
   isOpen,
@@ -11,7 +11,7 @@ export default function ConfirmationPopup({
   }
 
   return (
-    <PopupWithForm
+    <Popup
       title="Tem certeza?"
       name="popup"
       isOpen={isOpen}
@@ -21,6 +21,6 @@ export default function ConfirmationPopup({
       <button className="formcard__delete" type="submit">
         Sim
       </button>
-    </PopupWithForm>
+    </Popup>
   );
 }

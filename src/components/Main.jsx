@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import buttonPic from "../images/vector.svg";
 import buttonAddPic from "../images/vectoradd.svg";
 import close from "../images/close.svg";
-import PopupWithForm from "./Popup";
+import Popup from "./Popup";
 import Card from "./Card";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { useContext } from "react";
@@ -49,7 +49,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
       ))}
       </div>
 
-      <PopupWithForm
+      <Popup
   name="user"
   title="Editar Perfil"
   isOpen={isEditProfilePopupOpen}
@@ -81,9 +81,9 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
   <button type="submit" className="form__submit">
     Salvar
   </button>
-</PopupWithForm>
+</Popup>
 
-<PopupWithForm
+<Popup
   name="avatar"
   title="Alterar a Foto de Perfil"
   isOpen={isEditAvatarPopupOpen}
@@ -100,9 +100,9 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
   <span id="avatar-error" className="popup__avatar-error"></span> {/* Alteração aqui para 'span' e ID correto */}
 
   <button className="popup__avatar-submit" type="submit">Salvar</button>
-</PopupWithForm>
+</Popup>
 
-<PopupWithForm
+<Popup
   name="card"
   title="Novo Local"
   isOpen={isAddPlacePopupOpen}
@@ -128,7 +128,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     required
   />
   <span id="formcard__input-link-error" className="formcard__input-link-error"></span> {/* Alteração aqui para 'span' e ID correto */}
-</PopupWithForm>
+</Popup>
     </main>
     )
 }

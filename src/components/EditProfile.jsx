@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'; 
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import PopupWithForm from './Popup';
+import Popup from './Popup';
 
 export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
   const { currentUser, handleUpdateUser } = useContext(CurrentUserContext); // Obtém o objeto de usuário atual
@@ -23,7 +23,7 @@ export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
   };
 
   return (
-    <PopupWithForm
+    <Popup
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -64,6 +64,6 @@ export default function EditProfile({ isOpen, onClose, onUpdateUser }) {
       <button className="form__submit" type="submit">
         Salvar
       </button>
-    </PopupWithForm>
+    </Popup>
   );
 }

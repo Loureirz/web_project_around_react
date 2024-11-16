@@ -1,5 +1,5 @@
 import { useState, useContext, useRef, useEffect } from 'react';
-import PopupWithForm from './Popup';
+import Popup from './Popup';
 
 export default function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
     const link = useRef("");
@@ -18,7 +18,7 @@ export default function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
     };
 
   return (
-    <PopupWithForm
+    <Popup
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -38,6 +38,6 @@ export default function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
       <button type="submit" className="popup__avatar-submit">
         Salvar
       </button>
-    </PopupWithForm>
+    </Popup>
   );
 }

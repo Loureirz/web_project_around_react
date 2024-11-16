@@ -27,7 +27,7 @@ const configAvatarValidade = {
   errorClassVisible: "popup__avatar-error_visible"
 };
 
-export default function PopupWithForm({ name, title, children, isOpen, onClose, onSubmit }) {
+export default function Popup({ name, title, children, isOpen, onClose, onSubmit }) {
   const formRef = useRef();
   const validatorRef = useRef();
 

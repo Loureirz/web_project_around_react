@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import PopupWithForm from './Popup';
+import Popup from './Popup';
 
 function NewCard({ isOpen, onClose, onAddPlaceSubmit }) {
   const [name, setName] = useState('');
@@ -20,7 +20,7 @@ function NewCard({ isOpen, onClose, onAddPlaceSubmit }) {
   };
 
   return (
-    <PopupWithForm
+    <Popup
       isOpen={isOpen}
       title="Novo Local"
       name="card" // ajuste este nome para corresponder ao seletor de configuração correto em configFormValidade
@@ -60,7 +60,7 @@ function NewCard({ isOpen, onClose, onAddPlaceSubmit }) {
       >
         Criar
       </button>
-    </PopupWithForm>
+    </Popup>
   );
 }
 
