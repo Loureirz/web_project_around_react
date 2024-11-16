@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import ImagePopup from "./ImagePopup.jsx";
 import EditProfile from "./EditProfile.jsx";
 import EditAvatar from "./EditAvatar.jsx";
-import AddPlacePopup from "./NewCard.jsx";
+import NewCard from "./NewCard.jsx";
 import ConfirmationPopup from "./RemoveCard.jsx";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
@@ -177,7 +177,7 @@ const handleAddPlaceSubmit = (newCardData) => {
         onClose={closeAllPopups}
         onUpdateAvatar={handleUpdateAvatar}
       />
-      <AddPlacePopup
+      <NewCard
         isOpen={isAddPlacePopupOpen}
         onClose={closeAllPopups}
         onAddPlaceSubmit={handleAddPlaceSubmit}
