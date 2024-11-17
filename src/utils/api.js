@@ -29,7 +29,6 @@ class Api {
     }
 
     editUserInfo({ name, about }) {
-      console.log('Enviando dados para a API:', { name, about });  // Debug para ver os dados enviados
       return fetch(`${this._baseUrl}/users/me`, {
         method: "PATCH",
         headers: this._headers,
@@ -54,7 +53,6 @@ class Api {
     
 
     addCard({name, link}) {
-      console.log(this._baseUrl)
       return fetch(`${this._baseUrl}/cards`, {
         method: "POST",
         headers: this._headers,

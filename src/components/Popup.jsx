@@ -66,7 +66,7 @@ export default function Popup({ name, title, children, isOpen, onClose, onSubmit
   return (
     <div className={`popup popup_${name} ${cssIsOpened}`}>
       <div className="overlay"></div>
-      <div className="popup__container">
+      <div className={`popup__container ${name === "small" ? "popup__container_small" : ""}`}>
         <button className="popup__close" onClick={onClose}>
           <img src={close} alt="icone de fechar" className="popup__close-img" />
         </button>

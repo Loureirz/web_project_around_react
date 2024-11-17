@@ -26,11 +26,10 @@ function App() {
     api
       .getUserInfo()
       .then((data) => {
-        console.log('Dados do usuário obtidos:', data); // Verifica os dados retornados
         setCurrentUser(data);
       })
       .catch((error) => {
-        console.log('Erro ao obter dados do usuário:', error);
+        console.error('Erro ao obter dados do usuário:', error);
       });
   
     api
@@ -74,17 +73,14 @@ function App() {
 
   const handleCardLike = (card) => {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log("Estado atual do like antes da API:", isLiked);
   
     api
       .changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
-        console.log("Novo card atualizado:", newCard); // Confirma o card atualizado
   
         // Atualiza o estado de cards, substituindo apenas o card que mudou
         setCards((prevCards) => {
           if (prevCards.length === 0) {
-            console.log("Erro: Nenhum card encontrado no estado atual.");
             return prevCards; // Retorna o estado anterior sem mudanças
           }
           
@@ -92,8 +88,7 @@ function App() {
           const updatedCards = prevCards.map((c) => 
             c._id === card._id ? newCard : c
           );
-  
-          console.log("Novo estado de cards após atualização:", updatedCards);
+
           return updatedCards;
         });
       })

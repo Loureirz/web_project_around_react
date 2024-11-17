@@ -13,7 +13,7 @@ export default function ConfirmationPopup({
   return (
     <Popup
       title="Tem certeza?"
-      name="popup"
+      name="small"
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleConfirmationSubmit}

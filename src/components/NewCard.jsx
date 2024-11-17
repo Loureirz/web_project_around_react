@@ -23,7 +23,7 @@ function NewCard({ isOpen, onClose, onAddPlaceSubmit }) {
     <Popup
       isOpen={isOpen}
       title="Novo Local"
-      name="card" // ajuste este nome para corresponder ao seletor de configuração correto em configFormValidade
+      name="card"
       onClose={onClose}
       onSubmit={handleSubmit}
     >

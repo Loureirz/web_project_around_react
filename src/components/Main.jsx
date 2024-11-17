@@ -65,7 +65,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     placeholder="Nome"
     required
   />
-  <p id="username-error" className="form__input-name-error"></p> {/* Alterado para 'span' */}
+  <p id="username-error" className="form__input-name-error"></p>
   
   <input
     name="userabout"
@@ -76,7 +76,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     placeholder="Sobre"
     required
   />
-  <span id="userabout-error" className="form__input-job-error"></span> {/* Alterado para 'span' */}
+  <span id="userabout-error" className="form__input-job-error"></span>
 
   <button type="submit" className="form__submit">
     Salvar
@@ -97,7 +97,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     name="image"
     required
   />
-  <span id="avatar-error" className="popup__avatar-error"></span> {/* Alteração aqui para 'span' e ID correto */}
+  <span id="avatar-error" className="popup__avatar-error"></span>
 
   <button className="popup__avatar-submit" type="submit">Salvar</button>
 </Popup>
@@ -117,7 +117,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     placeholder="Título"
     required
   />
-  <span id="formcard__input-title-error" className="formcard__input-title-error"></span> {/* Alteração aqui para 'span' e ID correto */}
+  <span id="formcard__input-title-error" className="formcard__input-title-error"></span>
 
   <input
     id="link-image"
@@ -127,7 +127,7 @@ export default function Main({cards, onEditAvatarClick, isEditAvatarPopupOpen, o
     placeholder="Link da Imagem"
     required
   />
-  <span id="formcard__input-link-error" className="formcard__input-link-error"></span> {/* Alteração aqui para 'span' e ID correto */}
+  <span id="formcard__input-link-error" className="formcard__input-link-error"></span>
 </Popup>
     </main>
     )

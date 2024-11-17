@@ -112,7 +112,7 @@
 }
 
 .formcard__delete {
-  width: 358px;
+  width: 258px;
   height: 46px;
   background-color: #000;
   color: #fff;
@@ -158,6 +158,12 @@
     padding: 0;
     margin: 40px 22px 25px 22px;
     border-radius: 5px;
+  }
+
+  .formcard__delete {
+    width: 238px;
+    height: 46px;
+    margin: 35px 16px 25px 16px;
   }
 }
 
